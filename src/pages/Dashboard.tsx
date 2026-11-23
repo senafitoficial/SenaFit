@@ -195,7 +195,7 @@ export function Dashboard() {
               <h3>Próximos vencimientos</h3>
               <p>Inscripciones que requieren atención</p>
             </div>
-            <Link to="/aprendices">
+            <Link to="/inscripciones">
               Gestionar <ArrowRight size={15} />
             </Link>
           </div>

@@ -1,8 +1,6 @@
 
 import { useEffect, useMemo, useState, type FormEvent } from "react";
 import {
-  CheckCircle2,
-  ClockAlert,
   Download,
   Pencil,
   Plus,
@@ -246,39 +244,6 @@ export function Aprendices() {
           </button>
         }
       />
-
-      <section className="enrollment-summary" aria-label="Resumen de inscripciones">
-        <article>
-          <div className="summary-icon">
-            <UserRound size={20} />
-          </div>
-          <div>
-            <span>Total inscripciones</span>
-            <strong>1.086</strong>
-            <small>Histórico del gimnasio</small>
-          </div>
-        </article>
-        <article>
-          <div className="summary-icon">
-            <CheckCircle2 size={20} />
-          </div>
-          <div>
-            <span>Inscripciones vigentes</span>
-            <strong>934</strong>
-            <small><b>86%</b> del total</small>
-          </div>
-        </article>
-        <article>
-          <div className="summary-icon">
-            <ClockAlert size={20} />
-          </div>
-          <div>
-            <span>Próximas a vencer</span>
-            <strong>28</strong>
-            <small>En los siguientes 15 días</small>
-          </div>
-        </article>
-      </section>
 
       {errorMessage && (
         <div
