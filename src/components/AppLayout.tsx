@@ -4,7 +4,6 @@ import {
   Bell,
   CalendarCheck,
   ChevronDown,
-  ClipboardList,
   Dumbbell,
   LayoutDashboard,
   LogOut,
@@ -19,14 +18,12 @@ const navItems = [
   { to: "/dashboard", label: "Panel general", icon: LayoutDashboard },
   { to: "/aprendices", label: "Aprendices", icon: Users },
   { to: "/asistencias", label: "Asistencias", icon: CalendarCheck },
-  { to: "/inscripciones", label: "Inscripciones", icon: ClipboardList },
 ];
 
 const pageTitles: Record<string, { title: string; eyebrow: string }> = {
   "/dashboard": { title: "Panel general", eyebrow: "Resumen operativo" },
   "/aprendices": { title: "Aprendices", eyebrow: "Gestión de usuarios" },
   "/asistencias": { title: "Asistencias", eyebrow: "Control de acceso" },
-  "/inscripciones": { title: "Inscripciones", eyebrow: "Membresías y vigencias" },
 };
 
 export function AppLayout() {

@@ -2,7 +2,6 @@ import {
   ArrowRight,
   CalendarCheck,
   Clock3,
-  ClipboardCheck,
   TrendingUp,
   UserPlus,
   Users,
@@ -24,13 +23,6 @@ const stats = [
     change: "+12,1%",
     note: "42 en el gimnasio",
     icon: CalendarCheck,
-  },
-  {
-    label: "Inscripciones vigentes",
-    value: "934",
-    change: "+5,2%",
-    note: "74,8% del total",
-    icon: ClipboardCheck,
   },
   {
     label: "Promedio de sesión",
@@ -189,31 +181,6 @@ export function Dashboard() {
           </div>
         </section>
 
-        <section className="panel expires-panel">
-          <div className="panel__header">
-            <div>
-              <h3>Próximos vencimientos</h3>
-              <p>Inscripciones que requieren atención</p>
-            </div>
-            <Link to="/inscripciones">
-              Gestionar <ArrowRight size={15} />
-            </Link>
-          </div>
-          {[
-            ["Ana María Gómez", "Hoy", "AM"],
-            ["Nicolás Vargas", "22 may", "NV"],
-            ["Daniela Sánchez", "24 may", "DS"],
-          ].map(([nombre, fecha, iniciales]) => (
-            <div className="expiry-row" key={nombre}>
-              <div className="avatar avatar--soft">{iniciales}</div>
-              <div>
-                <strong>{nombre}</strong>
-                <span>Ficha 2678341</span>
-              </div>
-              <time>{fecha}</time>
-            </div>
-          ))}
-        </section>
       </div>
     </div>
   );
