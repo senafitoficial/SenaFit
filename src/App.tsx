@@ -19,8 +19,8 @@ export default function App() {
         <Route path="/aprendices" element={<Aprendices />} />
         <Route path="/asistencias" element={<Asistencias />} />
       </Route>
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      <Route path="*" element={<Navigate to="/dashboard" replace />} />
+      <Route path="/" element={<Navigate to="/login" replace />} />
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );
 }
