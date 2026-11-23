@@ -47,12 +47,12 @@ export function FilterButton({ label = "Filtros" }: { label?: string }) {
   );
 }
 
-export function StatusBadge({ status }: { status: string }) {
-  const slug = status.toLowerCase().replace(" ", "-");
+export function InsigniaEstado({ estado }: { estado: string }) {
+  const slug = estado.toLowerCase().replace(" ", "-");
   return (
     <span className={`status status--${slug}`}>
       <i />
-      {status}
+      {estado}
     </span>
   );
 }

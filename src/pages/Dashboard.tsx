@@ -6,10 +6,10 @@ import {
   TrendingUp,
   UserPlus,
   Users,
+  
 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { StatusBadge } from "../components/PageUI";
-
+import { InsigniaEstado } from "../components/PageUI";
 const stats = [
   {
     label: "Aprendices activos",
@@ -43,36 +43,37 @@ const stats = [
 
 const activities = [
   {
-    initials: "VR",
-    name: "Valentina Rodríguez",
-    detail: "Registró entrada al gimnasio",
-    time: "Hace 4 min",
-    type: "Entrada",
+    iniciales: "VR",
+    nombre: "Valentina Rodríguez",
+    detalle: "Registró entrada al gimnasio",
+    hora: "Hace 4 min",
+    tipo: "Entrada",
   },
   {
-    initials: "JM",
-    name: "Juan David Martínez",
-    detail: "Inscripción renovada por 3 meses",
-    time: "Hace 18 min",
-    type: "Renovación",
+    iniciales: "JM",
+    nombre: "Juan David Martínez",
+    detalle: "Inscripción renovada por 3 meses",
+    hora: "Hace 18 min",
+    tipo: "Renovación",
   },
   {
-    initials: "LC",
-    name: "Laura Sofía Castro",
-    detail: "Actualizó sus datos personales",
-    time: "Hace 36 min",
-    type: "Actualización",
+    iniciales: "LC",
+    nombre: "Laura Sofía Castro",
+    detalle: "Actualizó sus datos personales",
+    hora: "Hace 36 min",
+    tipo: "Actualización",
   },
   {
-    initials: "SM",
-    name: "Santiago Moreno",
-    detail: "Registró salida · Sesión de 58 min",
-    time: "Hace 52 min",
-    type: "Salida",
+    iniciales: "SM",
+    nombre: "Santiago Moreno",
+    detalle: "Registró salida · Sesión de 58 min",
+    hora: "Hace 52 min",
+    tipo: "Salida",
   },
 ];
 
 export function Dashboard() {
+  
   return (
     <div className="dashboard">
       <div className="welcome-row">
@@ -175,14 +176,14 @@ export function Dashboard() {
           </div>
           <div className="activity-list">
             {activities.map((activity) => (
-              <div className="activity-item" key={`${activity.name}-${activity.time}`}>
-                <div className="avatar avatar--soft">{activity.initials}</div>
+              <div className="activity-item" key={`${activity.nombre}-${activity.hora}`}>
+                <div className="avatar avatar--soft">{activity.iniciales}</div>
                 <div className="activity-copy">
-                  <strong>{activity.name}</strong>
-                  <span>{activity.detail}</span>
+                  <strong>{activity.nombre}</strong>
+                  <span>{activity.detalle}</span>
                 </div>
-                <StatusBadge status={activity.type} />
-                <time>{activity.time}</time>
+                <InsigniaEstado estado={activity.tipo} />
+                <time>{activity.hora}</time>
               </div>
             ))}
           </div>
@@ -202,14 +203,14 @@ export function Dashboard() {
             ["Ana María Gómez", "Hoy", "AM"],
             ["Nicolás Vargas", "22 may", "NV"],
             ["Daniela Sánchez", "24 may", "DS"],
-          ].map(([name, date, initials]) => (
-            <div className="expiry-row" key={name}>
-              <div className="avatar avatar--soft">{initials}</div>
+          ].map(([nombre, fecha, iniciales]) => (
+            <div className="expiry-row" key={nombre}>
+              <div className="avatar avatar--soft">{iniciales}</div>
               <div>
-                <strong>{name}</strong>
+                <strong>{nombre}</strong>
                 <span>Ficha 2678341</span>
               </div>
-              <time>{date}</time>
+              <time>{fecha}</time>
             </div>
           ))}
         </section>

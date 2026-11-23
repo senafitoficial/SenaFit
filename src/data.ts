@@ -1,63 +1,63 @@
-export type Learner = {
+export type AprendizDemo = {
   id: number;
-  name: string;
-  document: string;
+  nombre: string;
+  documento: string;
   ficha: string;
-  center: string;
-  status: "Activo" | "Inactivo";
-  disability: string;
-  initials: string;
+  centroFormacion: string;
+  estado: boolean;
+  discapacidad: string;
+  iniciales: string;
 };
 
-export const initialLearners: Learner[] = [
+export const aprendicesIniciales: AprendizDemo[] = [
   {
     id: 1,
-    name: "Valentina Rodríguez",
-    document: "1.014.287.392",
+    nombre: "Valentina Rodríguez",
+    documento: "1.014.287.392",
     ficha: "2678341",
-    center: "Servicios Financieros",
-    status: "Activo",
-    disability: "Ninguna",
-    initials: "VR",
+    centroFormacion: "Servicios Financieros",
+    estado: true,
+    discapacidad: "Ninguna",
+    iniciales: "VR",
   },
   {
     id: 2,
-    name: "Mateo Hernández",
-    document: "1.002.845.127",
+    nombre: "Mateo Hernández",
+    documento: "1.002.845.127",
     ficha: "2691054",
-    center: "Gestión Administrativa",
-    status: "Activo",
-    disability: "Ninguna",
-    initials: "MH",
+    centroFormacion: "Gestión Administrativa",
+    estado: true,
+    discapacidad: "Ninguna",
+    iniciales: "MH",
   },
   {
     id: 3,
-    name: "Laura Sofía Castro",
-    document: "1.023.671.455",
+    nombre: "Laura Sofía Castro",
+    documento: "1.023.671.455",
     ficha: "2679012",
-    center: "Servicios Financieros",
-    status: "Activo",
-    disability: "Visual",
-    initials: "LC",
+    centroFormacion: "Servicios Financieros",
+    estado: true,
+    discapacidad: "Visual",
+    iniciales: "LC",
   },
   {
     id: 4,
-    name: "Santiago Moreno",
-    document: "1.019.342.876",
+    nombre: "Santiago Moreno",
+    documento: "1.019.342.876",
     ficha: "2684450",
-    center: "Diseño y Metrología",
-    status: "Inactivo",
-    disability: "Ninguna",
-    initials: "SM",
+    centroFormacion: "Diseño y Metrología",
+    estado: false,
+    discapacidad: "Ninguna",
+    iniciales: "SM",
   },
   {
     id: 5,
-    name: "Mariana López",
-    document: "1.008.993.214",
+    nombre: "Mariana López",
+    documento: "1.008.993.214",
     ficha: "2692108",
-    center: "Gestión Administrativa",
-    status: "Activo",
-    disability: "Ninguna",
-    initials: "ML",
+    centroFormacion: "Gestión Administrativa",
+    estado: true,
+    discapacidad: "Ninguna",
+    iniciales: "ML",
   },
 ];

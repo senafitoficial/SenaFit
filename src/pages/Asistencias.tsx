@@ -10,86 +10,91 @@ import {
   X,
 } from "lucide-react";
 import { Modal } from "../components/Modal";
-import { FilterButton, PageIntro, SearchField, StatusBadge } from "../components/PageUI";
+import {
+  FilterButton,
+  InsigniaEstado,
+  PageIntro,
+  SearchField,
+} from "../components/PageUI";
 
-type Attendance = {
+type RegistroAsistencia = {
   id: number;
-  name: string;
-  initials: string;
-  document: string;
-  date: string;
-  entry: string;
-  exit: string;
-  duration: string;
-  status: string;
+  nombre: string;
+  iniciales: string;
+  documento: string;
+  fecha: string;
+  entrada: string;
+  salida: string;
+  duracion: string;
+  estado: string;
 };
-const initialRecords: Attendance[] = [
+const registrosIniciales: RegistroAsistencia[] = [
   {
     id: 1,
-    name: "Valentina Rodríguez",
-    initials: "VR",
-    document: "1.014.287.392",
-    date: "20 may 2025",
-    entry: "06:42",
-    exit: "—",
-    duration: "En curso",
-    status: "En gimnasio",
+    nombre: "Valentina Rodríguez",
+    iniciales: "VR",
+    documento: "1.014.287.392",
+    fecha: "20 may 2025",
+    entrada: "06:42",
+    salida: "—",
+    duracion: "En curso",
+    estado: "En gimnasio",
   },
   {
     id: 2,
-    name: "Mateo Hernández",
-    initials: "MH",
-    document: "1.002.845.127",
-    date: "20 may 2025",
-    entry: "07:08",
-    exit: "08:16",
-    duration: "1 h 08 min",
-    status: "Finalizada",
+    nombre: "Mateo Hernández",
+    iniciales: "MH",
+    documento: "1.002.845.127",
+    fecha: "20 may 2025",
+    entrada: "07:08",
+    salida: "08:16",
+    duracion: "1 h 08 min",
+    estado: "Finalizada",
   },
   {
     id: 3,
-    name: "Laura Sofía Castro",
-    initials: "LC",
-    document: "1.023.671.455",
-    date: "20 may 2025",
-    entry: "07:21",
-    exit: "08:15",
-    duration: "54 min",
-    status: "Finalizada",
+    nombre: "Laura Sofía Castro",
+    iniciales: "LC",
+    documento: "1.023.671.455",
+    fecha: "20 may 2025",
+    entrada: "07:21",
+    salida: "08:15",
+    duracion: "54 min",
+    estado: "Finalizada",
   },
   {
     id: 4,
-    name: "Mariana López",
-    initials: "ML",
-    document: "1.008.993.214",
-    date: "20 may 2025",
-    entry: "08:04",
-    exit: "—",
-    duration: "En curso",
-    status: "En gimnasio",
+    nombre: "Mariana López",
+    iniciales: "ML",
+    documento: "1.008.993.214",
+    fecha: "20 may 2025",
+    entrada: "08:04",
+    salida: "—",
+    duracion: "En curso",
+    estado: "En gimnasio",
   },
   {
     id: 5,
-    name: "Andrés Ramírez",
-    initials: "AR",
-    document: "1.010.552.321",
-    date: "19 may 2025",
-    entry: "17:32",
-    exit: "18:41",
-    duration: "1 h 09 min",
-    status: "Finalizada",
+    nombre: "Andrés Ramírez",
+    iniciales: "AR",
+    documento: "1.010.552.321",
+    fecha: "19 may 2025",
+    entrada: "17:32",
+    salida: "18:41",
+    duracion: "1 h 09 min",
+    estado: "Finalizada",
   },
 ];
 
 export function Asistencias() {
-  const [records, setRecords] = useState(initialRecords);
+  const [records, setRecords] = useState(registrosIniciales);
   const [search, setSearch] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
-  const [document, setDocument] = useState("");
+  const [documento, setDocumento] = useState("");
   const filtered = useMemo(
     () =>
       records.filter((record) =>
-        `${record.name} ${record.document}`.toLowerCase().includes(search.toLowerCase()),
+        `${record.nombre} ${record.documento}`.toLowerCase().includes(search.toLowerCase()),
       ),
     [records, search],
   );
@@ -99,26 +104,31 @@ export function Asistencias() {
     setRecords([
       {
         id: Date.now(),
-        name: "Carlos Andrés Pérez",
-        initials: "CP",
-        document,
-        date: "20 may 2025",
-        entry: "09:34",
-        exit: "—",
-        duration: "En curso",
-        status: "En gimnasio",
+        nombre: "Carlos Andrés Pérez",
+        iniciales: "CP",
+        documento,
+        fecha: "20 may 2025",
+        entrada: "09:34",
+        salida: "—",
+        duracion: "En curso",
+        estado: "En gimnasio",
       },
       ...records,
     ]);
     setModalOpen(false);
-    setDocument("");
+    setDocumento("");
   }
 
   function checkout(id: number) {
     setRecords(
       records.map((record) =>
         record.id === id
-          ? { ...record, exit: "10:28", duration: "1 h 02 min", status: "Finalizada" }
+          ? {
+              ...record,
+              salida: "10:28",
+              duracion: "1 h 02 min",
+              estado: "Finalizada",
+            }
           : record,
       ),
     );
@@ -209,36 +219,36 @@ export function Asistencias() {
                 <tr key={record.id}>
                   <td>
                     <div className="person-cell">
-                      <div className="avatar avatar--soft">{record.initials}</div>
+                      <div className="avatar avatar--soft">{record.iniciales}</div>
                       <div>
-                        <strong>{record.name}</strong>
-                        <small>{record.document}</small>
+                        <strong>{record.nombre}</strong>
+                        <small>{record.documento}</small>
                       </div>
                     </div>
                   </td>
-                  <td>{record.date}</td>
+                  <td>{record.fecha}</td>
                   <td>
                     <span className="time-cell time-cell--in">
                       <ArrowDownRight size={15} />
-                      {record.entry}
+                      {record.entrada}
                     </span>
                   </td>
                   <td>
-                    {record.exit === "—" ? (
+                    {record.salida === "—" ? (
                       "—"
                     ) : (
                       <span className="time-cell">
                         <ArrowUpRight size={15} />
-                        {record.exit}
+                        {record.salida}
                       </span>
                     )}
                   </td>
-                  <td>{record.duration}</td>
+                  <td>{record.duracion}</td>
                   <td>
-                    <StatusBadge status={record.status} />
+                    <InsigniaEstado estado={record.estado} />
                   </td>
                   <td>
-                    {record.status === "En gimnasio" ? (
+                    {record.estado === "En gimnasio" ? (
                       <button className="text-button" onClick={() => checkout(record.id)}>
                         Registrar salida
                       </button>
@@ -274,8 +284,8 @@ export function Asistencias() {
               <input
                 autoFocus
                 required
-                value={document}
-                onChange={(e) => setDocument(e.target.value)}
+                value={documento}
+                onChange={(e) => setDocumento(e.target.value)}
                 placeholder="Ej. 1.024.568.921"
               />
             </label>

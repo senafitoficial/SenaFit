@@ -10,108 +10,113 @@ import {
   X,
 } from "lucide-react";
 import { Modal } from "../components/Modal";
-import { FilterButton, PageIntro, SearchField, StatusBadge } from "../components/PageUI";
+import {
+  FilterButton,
+  InsigniaEstado,
+  PageIntro,
+  SearchField,
+} from "../components/PageUI";
 
-type Enrollment = {
+type Inscripcion = {
   id: number;
-  name: string;
-  initials: string;
+  nombre: string;
+  iniciales: string;
   ficha: string;
-  start: string;
-  end: string;
-  status: string;
-  remaining: string;
+  fechaInicio: string;
+  fechaFin: string;
+  estado: string;
+  tiempoRestante: string;
 };
-const initialEnrollments: Enrollment[] = [
+const inscripcionesIniciales: Inscripcion[] = [
   {
     id: 1,
-    name: "Valentina Rodríguez",
-    initials: "VR",
+    nombre: "Valentina Rodríguez",
+    iniciales: "VR",
     ficha: "2678341",
-    start: "12 feb 2025",
-    end: "12 ago 2025",
-    status: "Vigente",
-    remaining: "84 días",
+    fechaInicio: "12 feb 2025",
+    fechaFin: "12 ago 2025",
+    estado: "Vigente",
+    tiempoRestante: "84 días",
   },
   {
     id: 2,
-    name: "Mateo Hernández",
-    initials: "MH",
+    nombre: "Mateo Hernández",
+    iniciales: "MH",
     ficha: "2691054",
-    start: "05 mar 2025",
-    end: "05 jun 2025",
-    status: "Por vencer",
-    remaining: "16 días",
+    fechaInicio: "05 mar 2025",
+    fechaFin: "05 jun 2025",
+    estado: "Por vencer",
+    tiempoRestante: "16 días",
   },
   {
     id: 3,
-    name: "Laura Sofía Castro",
-    initials: "LC",
+    nombre: "Laura Sofía Castro",
+    iniciales: "LC",
     ficha: "2679012",
-    start: "18 ene 2025",
-    end: "18 jul 2025",
-    status: "Vigente",
-    remaining: "59 días",
+    fechaInicio: "18 ene 2025",
+    fechaFin: "18 jul 2025",
+    estado: "Vigente",
+    tiempoRestante: "59 días",
   },
   {
     id: 4,
-    name: "Ana María Gómez",
-    initials: "AG",
+    nombre: "Ana María Gómez",
+    iniciales: "AG",
     ficha: "2684450",
-    start: "20 feb 2025",
-    end: "20 may 2025",
-    status: "Vence hoy",
-    remaining: "Hoy",
+    fechaInicio: "20 feb 2025",
+    fechaFin: "20 may 2025",
+    estado: "Vence hoy",
+    tiempoRestante: "Hoy",
   },
   {
     id: 5,
-    name: "Nicolás Vargas",
-    initials: "NV",
+    nombre: "Nicolás Vargas",
+    iniciales: "NV",
     ficha: "2692108",
-    start: "22 feb 2025",
-    end: "22 may 2025",
-    status: "Por vencer",
-    remaining: "2 días",
+    fechaInicio: "22 feb 2025",
+    fechaFin: "22 may 2025",
+    estado: "Por vencer",
+    tiempoRestante: "2 días",
   },
 ];
 
 export function Inscripciones() {
-  const [enrollments, setEnrollments] = useState(initialEnrollments);
+  const [inscripciones, setInscripciones] = useState(inscripcionesIniciales);
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("Todas");
   const [modalOpen, setModalOpen] = useState(false);
   const [learner, setLearner] = useState("");
   const filtered = useMemo(
     () =>
-      enrollments.filter(
+      inscripciones.filter(
         (item) =>
-          item.name.toLowerCase().includes(search.toLowerCase()) &&
-          (filter === "Todas" || item.status === filter),
+          item.nombre.toLowerCase().includes(search.toLowerCase()) &&
+          (filter === "Todas" || item.estado === filter),
       ),
-    [enrollments, search, filter],
+    [inscripciones, search, filter],
   );
 
   function createEnrollment(event: FormEvent) {
     event.preventDefault();
-    const name = learner || "Juan Felipe Torres";
-    const initials = name
+    const nombre = learner || "Juan Felipe Torres";
+    const iniciales = nombre
       .split(" ")
       .slice(0, 2)
       .map((part) => part[0])
       .join("")
       .toUpperCase();
-    setEnrollments([
+    setInscripciones([
       {
         id: Date.now(),
-        name,
-        initials,
+        nombre,
+        iniciales,
         ficha: "2701184",
-        start: "20 may 2025",
-        end: "20 ago 2025",
-        status: "Vigente",
-        remaining: "92 días",
+        fechaInicio: "20 may 2025",
+        fechaFin: "20 ago 2025",
+        estado: "Vigente",
+        tiempoRestante: "92 días",
       },
-      ...enrollments,
+      ...inscripciones,
     ]);
     setModalOpen(false);
     setLearner("");
@@ -202,26 +207,26 @@ export function Inscripciones() {
                 <tr key={item.id}>
                   <td>
                     <div className="person-cell">
-                      <div className="avatar avatar--soft">{item.initials}</div>
+                      <div className="avatar avatar--soft">{item.iniciales}</div>
                       <div>
-                        <strong>{item.name}</strong>
+                        <strong>{item.nombre}</strong>
                         <small>Ficha {item.ficha}</small>
                       </div>
                     </div>
                   </td>
-                  <td>{item.start}</td>
-                  <td>{item.end}</td>
+                  <td>{item.fechaInicio}</td>
+                  <td>{item.fechaFin}</td>
                   <td>
-                    <span className={item.remaining === "Hoy" ? "due-today" : ""}>
-                      {item.remaining}
+                    <span className={item.tiempoRestante === "Hoy" ? "due-today" : ""}>
+                      {item.tiempoRestante}
                     </span>
                   </td>
                   <td>
-                    <StatusBadge status={item.status} />
+                    <InsigniaEstado estado={item.estado} />
                   </td>
                   <td>
                     <div className="row-actions">
-                      {item.status !== "Vigente" && (
+                      {item.estado !== "Vigente" && (
                         <button className="renew-button">
                           <RefreshCw size={15} /> Renovar
                         </button>
@@ -238,7 +243,7 @@ export function Inscripciones() {
         </div>
         <div className="table-footer">
           <span>
-            Mostrando {filtered.length} de {enrollments.length} inscripciones
+            Mostrando {filtered.length} de {inscripciones.length} inscripciones
           </span>
           <div>
             <button disabled>Anterior</button>
