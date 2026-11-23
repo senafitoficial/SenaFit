@@ -265,9 +265,7 @@ export function Aprendices() {
           <div>
             <span>Inscripciones vigentes</span>
             <strong>934</strong>
-            <small>
-              <b>86%</b> del total
-            </small>
+            <small><b>86%</b> del total</small>
           </div>
         </article>
         <article>
